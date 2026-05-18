@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+   
+}
+main{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+#container{
+    height: 500px;
+    width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+#container img{
+    height: 95%;
+    width: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#container i{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    font-size: 70px;
+    color: white;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+    transition: transform ease 0.3s;
+}
+
