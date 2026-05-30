@@ -1,7 +1,8 @@
 
 const reels = [
     {
-        username: "codewithayush",
+        ismuted: true,
+        username: "@Raghu",
         likeCount: 14820,
         isLiked: false,
         commentCount: 423,
@@ -11,8 +12,9 @@ const reels = [
         video: "./reels/video1.mp4",
         userprofile: "https://images.unsplash.com/photo-1613915617430-8ab0fd7c6baf?q=80&w=930&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
-    {
-        username: "designbysan",
+    {   
+        ismuted: true,
+        username: "Desiboys",
         likeCount: 9820,
         isLiked: true,
         commentCount: 184,
@@ -24,7 +26,8 @@ const reels = [
         userprofile: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79"
     },
     {
-        username: "frontend.ninja",
+        ismuted: true,
+        username: "Ringmater",
         likeCount: 22150,
         isLiked: false,
         commentCount: 612,
@@ -36,7 +39,8 @@ const reels = [
         userprofile: "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126"
     },
     {
-        username: "travelwithriya",
+        ismuted: true,
+        username: "Kingvloger",
         likeCount: 54200,
         isLiked: false,
         commentCount: 822,
@@ -48,7 +52,9 @@ const reels = [
         userprofile: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
     },
     {
-        username: "daily.dev.quotes",
+
+        ismuted: true,
+        username: "UpdateonTop",
         likeCount: 3120,
         isLiked: true,
         commentCount: 102,
@@ -60,7 +66,8 @@ const reels = [
         userprofile: "https://images.unsplash.com/photo-1599566150163-29194dcaad36"
     },
     {
-        username: "fitnessbymegha",
+        ismuted: true,
+        username: "GuysOne",
         likeCount: 27450,
         isLiked: false,
         commentCount: 540,
@@ -72,7 +79,8 @@ const reels = [
         userprofile: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6"
     },
     {
-        username: "streetfoodlover",
+        ismuted: true,
+        username: "@streetfoodlover",
         likeCount: 68000,
         isLiked: true,
         commentCount: 1304,
@@ -84,6 +92,7 @@ const reels = [
         userprofile: "https://images.unsplash.com/photo-1552058544-f2b08422138a"
     },
     {
+        ismuted: true,
         username: "musicbytara",
         likeCount: 14500,
         isLiked: false,
@@ -96,6 +105,7 @@ const reels = [
         userprofile: "https://images.unsplash.com/photo-1502685104226-ee32379fefbe"
     },
     {
+        ismuted: true,
         username: "techreviews101",
         likeCount: 23180,
         isLiked: true,
@@ -108,6 +118,7 @@ const reels = [
         userprofile: "https://images.unsplash.com/photo-1511367461989-f85a21fda167"
     },
     {
+        ismuted: true,
         username: "learnanimations",
         likeCount: 18740,
         isLiked: false,
@@ -121,22 +132,28 @@ const reels = [
     }
 ];
 
-var sum = ''
-reels.forEach(function (elem) {
+var allReels = document.querySelector('.all-reels')
+function addData(){
+  var sum = ''
+reels.forEach(function (elem,idx) {
     sum = sum + `<div class="reel">
-          <video autoplay loop muted src="${elem.video}"></video>
+          <video autoplay loop ${elem.ismuted ? 'muted' : ''} src="${elem.video}"></video>
+             <div class="mute" id=${idx}>
+             ${elem.ismuted?' <i class="ri-volume-mute-fill"></i>':'<i class="ri-volume-up-fill"></i>'}
+              
+             </div>
           <div class="bottom">
             <div class="user">
               <img
                 src="${elem.userprofile}"
                 alt="">
               <h4>${elem.username}</h4>
-              <button>${elem.isFollowed?'Unfollow':'Follow'}</button>
+              <button id=${idx} class='follow' >${elem.isFollowed?'Unfollow':'Follow'}</button>
             </div>
             <h3>${elem.caption}</h3>
           </div>
           <div class="right">
-            <div class="like">
+            <div id=${idx} class="like"  >
               <h4 class="like-icon icon">${elem.isLiked?'<i class="love ri-heart-3-fill"></i>':'<i class="ri-heart-3-line"></i>'}</h4>
               <h6>${elem.likeCount}</h6>
             </div>
@@ -154,8 +171,43 @@ reels.forEach(function (elem) {
           </div>
         </div>`
 })
-
-
-var allReels = document.querySelector('.all-reels')
-
 allReels.innerHTML = sum
+
+}
+addData()
+
+
+allReels.addEventListener('click',function(dets){
+
+  if(dets.target.className == 'like'){
+    if(!reels[dets.target.id].isLiked){
+      reels[dets.target.id].likeCount++
+      reels[dets.target.id].isLiked = true
+    }else{
+      reels[dets.target.id].likeCount--
+      reels[dets.target.id].isLiked = false
+    }
+    addData()
+  }
+  if(dets.target.className == 'follow'){
+    if(!reels[dets.target.id].isFollowed){
+      reels[dets.target.id].isFollowed = true
+    }else{
+      reels[dets.target.id].isFollowed = false
+    }
+    addData()
+  }
+
+  if(dets.target.className == 'mute'){
+    if(!reels[dets.target.id].ismuted){
+      reels[dets.target.id].ismuted = true
+    }else{
+      reels[dets.target.id].ismuted = false
+    }
+    addData()
+  }
+  
+ 
+ 
+ 
+})
