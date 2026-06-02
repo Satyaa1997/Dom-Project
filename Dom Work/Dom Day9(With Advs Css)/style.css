@@ -1,0 +1,50 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue";
+  color: white;
+}
+
+html,
+body{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+}
+.box{
+  border-radius: 5px;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 400px;
+  /* background:conic-gradient(from 90deg at 50% 50%, #141414, #212221, #1f1f20,rgb(238, 178, 68),rgb(240, 97, 97)); */
+  box-shadow:inset 0px 0px 20px 5px white;
+  animation: changeColor 3s linear infinite alternate;
+  gap: 50px;
+}
+
+.box p{
+  font-size: 3rem;
+  color: white;
+  text-shadow: 5px 5px 10px rgb(7, 0, 0);
+}
+@keyframes changeColor{
+  from{
+    background-color: rgb(3, 128, 13);
+    border-radius: 0px;
+    scale: 0.8;
+    background:conic-gradient(from 90deg at 50% 50%, #141414, #212221, #1f1f20,rgb(238, 178, 68),rgb(240, 97, 97));
+  }
+  to{
+    
+    border-radius: 80%;
+    scale: 1;
+    background:conic-gradient(from 90deg at 50% 50%, #eb1111, #064d06, #1f1f20,rgb(238, 178, 68),rgb(95, 25, 25));
+  }
+}
