@@ -41,18 +41,26 @@ body {
     max-width: 300px;
     padding-inline: 10px;
     padding-bottom: 10px;
-    color: whitesmoke;
+    color: rgb(250, 248, 249);
     display: flex;
     flex-direction: column;
     gap: 10px;
-    /* box-shadow: 0 0 60px rgb(255, 0, 123); */
     border-radius: 15px;
     background:
-        linear-gradient(black) padding-box,
-        conic-gradient(from var(--rotate), black, rgb(255, 0, 123), black) border-box;
-    border: 5px solid rgba(255, 255, 255, 0);
-    animation: borderAnimate 10s;
+    linear-gradient(black) padding-box,
+    conic-gradient(from var(--rotate), black, rgb(199, 3, 98), rgb(231, 8, 127)) border-box;
+    border: 0px solid rgba(255, 255, 255, 0);
+    animation: borderAnimate 5s;
     animation-iteration-count: infinite;
+    animation-play-state: paused;
+    transition: all 0.3s linear;
+    box-shadow: 0 0 0px rgb(231, 6, 182);
+}
+.box:hover {
+    animation-play-state: running;
+    border-width: 5px;
+    box-shadow: 0 0 50px rgb(231, 6, 182);
+    color: rgb(231, 6, 182);
 }
 
 .box img {
