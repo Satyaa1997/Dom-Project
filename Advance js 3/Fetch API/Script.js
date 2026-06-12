@@ -1,8 +1,9 @@
 function getUser(){
-    document.querySelector(".user").innerHTML = "";
+   
     fetch("https://randomuser.me/api/?results=3")
 .then((raw)=> raw.json())
 .then((data)=>{
+     document.querySelector(".user").innerHTML = "";
     data.results.forEach(function(userData){
        const container = document.querySelector(".user");
 
